@@ -4,8 +4,16 @@ session_start();
 require_once('classes/database.php');
 $sweetAlertConfig = "";
 $con = new database();
+if (isset($_SESSION['admin_ID'])) {
+
+  header('Location: index.php');
+
+
+}
 
 if(isset($_POST['login'])) {
+
+
 
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -29,7 +37,7 @@ if(isset($_POST['login'])) {
         window.location.href = 'index.php';
         });
     </script>";
-  } else {
+  }  else {
     $sweetAlertConfig = "<script>
     Swal.fire({
     icon: 'error',
